@@ -1,0 +1,39 @@
+Next, for every substring that you have extracted from the user messages, classify the user intent: what is the user trying to accomplish through their question(s) or order(s)? Assign applicable intent tags from the list below to each substring. Go back to the conversation for conversation context if necessary. 
+
+#info_retrieval: #info_retrieval applies to where the user asking direct fact question where the focus is on finding a discrete, objective fact (e.g., "What is the population of Tokyo?"). #info_retrieval also applies to concept searches where the user provides the name of a concept or topic as a query, implicitly requesting general information, definition, or facts about it (keyword query like "tokyo"). #info_retrieval also applies to refinding requests where the user believes a specific resource exists but has incomplete information, using partial clues to prompt the model (e.g., "What is the movie with the guy about time travel that came out last year?"). #info_retrieval also applies to unknown-item search where the user provides a definition or description to find the corresponding term (e.g., "what's a word for when the world gets hotter?")
+
+#info_discovery: #info_discovery applies to where when the user aims to explore new or unfamiliar information that the user may not be certain exists. #info_discovery applies to requests for a topic update, where the user is interested in updates or recent developments on a subject (e.g., "What’s new in AI research?"). #info_discovery also applies to similarity search where the users seek items that share features with a known reference (e.g.,  "suggest games similar to Minecraft"). #info_discovery also applies to requests for recommendations or ratings (e.g., "recommend some good restaurants in Mexico City"). #info_discovery also applies to perspective seeking, where explicitly requests one or more viewpoints, opinions, or personal stories on a topic.
+
+#info_understanding: #info_understanding applies to explanation request where the user seeks to understand a process, a cause-and-effect relationship, or the underlying principles of a concept (e.g., "How does climate change happen?", "Why is the sky blue?"). #info_understanding also applies to exemplar request where the user asks for specific instances of a category or concept to make
+abstract ideas more tangible (e.g., "give me an example of a metaphor") 
+
+#info_distillation: #info_distillation applies when the user wants the chatbot to process a body of information to make it more structured, concise, or comprehensible. #info_distillation applies to summarization requests where the user wants the chatbot to condense a topic or user-provided content to its essential points (e.g., "summarize the plot of Hamlet"). #info_distillation also applies to requests for key information identification, where the user seeks to isolate the most significant ideas from a larger body of text (e.g., "list me 5 keywords from this text").  #info_distillation also applies to information structuring requests where the user wants the chatbot to give a new logical schema on unstructured information to make it comprehensible (e.g., "present the pros and cons in a table"). 
+
+#info_analysis: #info_analysis applies when the user wants the chatbot to produce new insights, judgments, or conclusions. #info_analysis applies to qualitative data analysis which involves examining unstructured, non-numerical data (e.g., "what is the meaning of this text?"). #info_analysis also applies to quantitative data analysis of structured or numerical data to identify trends, correlations, or other statistical insights (e.g., analyze a table of numerical values). #info_analysis also applies to evaluative judgement where the user asks the chatbot to judge the value of someone, something, some ideas or options (e.g., "Should I do this?"). #info_analysis also applies to comparative analysis where the user asks the system to articulate the similarities and differences between two or more specific entities (e.g.,  "How is X similar to Y? How is X different from Y?"). #info_analysis also applies to when the user asks the chatbot to make inferences or prediction (e.g., "What would happen if global temps rise by 2 degrees?") or explore a hypothetical scenario (e.g., "what if dinosaurs had not gone extinct?").
+
+#method_guidance: #method_guidance applies when the user elicits procedural knowledge from the chatbot. #method_guidance applies to requests of how-to instructions where the user seeks step-by-step guidance on a specific task (e.g., "how do I write a good CV?") #method_guidance also applies to feasibility assessment, where the user wants the chatbot to evaluate the viability of a plan (e.g., "Is it feasible to travel across the country on a bike?". #method_guidance also applies to error identification where the user expects the diagnosis of a problem without yet asking for a solution (e.g., "why is my car making this noise?"). #method_guidance also applies to method recommendation where the user seeks the optimal strategy among various alternatives (e.g., "What's the best way to learn a new language?")
+
+#content_generation: #content_generation applies when the user requests the chatbot to produce novel material. #content_generation applies to creative content generation requests, where the user seeks content with an emphasis on novelty, artistic expression, or socio-emotional contexts (e.g., "come up with a poem about love for a cat"). #content_generation also applies to functional content generation requests, where the user asks for utility-focused content, such as code or an email, where practical application is the dominant goal (e.g., "Generate python code to sort a list"). #content_generation also applies to content extension/insertion request, where the user directs the system to add to existing material or continue an ongoing narrative, reflecting an iterative and collaborative writing process (e.g., "Add a conclusion to this paper.") 
+
+#content_modification: #content_modification applies to when the user provides raw material (either their own or a prior system generation) and instructs the system to alter it. #content_modification applies to requests for editing, where the user seeks improvements to the grammar, style, or structure of provided content to improve its quality (e.g., "proofread this essay for clarity").  #content_modification also applies to paraphrasing, reformatting or translation requests. 
+
+#system_management: #system_management applies when the user wants to probe or direct the system’s underlying state, capabilities, or behaviours. #system_management applies to persona directives, where the user assigns the chatbot a specific role or disposition that frames the entire interaction (e.g., "act as a customer service representative"). #system_management also applies to stylistic constraint, where a user dictates the tone, style, format, or length of a response (e.g., "use bullet points", "explain like I'm 5/")#system_management also applies system information query, where the user probes the system’s abilities, limitations, knowledge sources, or operational state (e.g., "can you access the internet?", "what data were you trained on?"). 
+
+EXAMPLE:
+USER TURN 1: "I want you to act as a babysitter.", "What activities would you do with the children?"
+USER TURN 2: "come up with a play for them to act in"
+USER TURN 3: "make the script simpler"
+USER TURN 4: N/A
+USER TURN 5: "do you think 4yo is too young for spicy ramen?"
+
+OUTPUT:
+USER TURN 1: #system_management, #method_guidance
+USER TURN 2: #content_generation
+USER TURN 3: #content_modification
+USER TURN 4: N/A
+USER TURN 5: #info_analysis
+
+Now it's your turn, using your previous reply as input:
+{}
+
+OUTPUT:

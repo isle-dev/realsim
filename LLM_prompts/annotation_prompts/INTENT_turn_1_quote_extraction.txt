@@ -1,0 +1,29 @@
+TASK CONTEXT: 
+You are given the log of a conversation that a user had with a chatbot. Your task is to first read the conversation history and then determine what type(s) of user intent corresponds to each user turn, if applicable.
+
+As a first step, read each user turn and determine whether the message contains a question or an order to do some task, whether explicit or implicit. If yes, extract and list the substring(s) that corresponds to the question(s) or order(s). If the message does not contain any question or order, simply put "N/A".
+
+Here's an example of the task:
+INPUT:
+USER TURN 1: I want you to act as a babysitter. You will be responsible for taking care of three active boys aged 4-8 during the evening hours. Their names are Bob, Mark, and Timmy. What activities would you do with the children?
+CHATBOT TURN 1: Sure, I would be happy to act as a babysitter... Here are some things I can do to ensure the children are well taken care of: 1. Safety first... 2. Meal and snack preparation... 3. Homework assistance…
+USER TURN 2: come up with a play for them to act in
+CHATBOT TURN 2: Sure, here's a play script for the three children: ,,,,
+USER TURN 3: the words are too hard for a 4yo, make the script simpler.
+CHATBOT TURN 3: You're absolutely right. Here's a simpler version of the play...
+USER TURN 4: ok, thanks. 
+CHATBOT TURN 4: You are welcome, let me know how else I can help.
+USER TURN 5: The play went really well, I think they all liked it, especially the part where the knight tames the dragon instead of slaying it. That was a creative twist. Now we are having dinner, do you think 4yo is too young for spicy ramen? He really wants to taste some. 
+
+OUTPUT:
+USER TURN 1: "I want you to act as a babysitter.", "What activities would you do with the children?"
+USER TURN 2: "come up with a play for them to act in"
+USER TURN 3: "make the script simpler"
+USER TURN 4: N/A
+USER TURN 5: "do you think 4yo is too young for spicy ramen?"
+
+Now is your turn. 
+INPUT: 
+{}
+
+OUTPUT:

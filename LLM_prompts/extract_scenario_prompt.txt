@@ -1,0 +1,71 @@
+TASK CONTEXT
+You are given a set of conversation logs between an user and a chatbot. Your task is to read the conversation logs and then write a summary for each conversation log describing what the USER is trying to accomplish in that interaction with the chatbot.
+
+DETAILED TASK INSTRUCTIONS.
+For each of the provided conversation logs:
+Step 1. Read all messages, paying special attention to USER messages.
+Step 2. Determine what the USER is trying to accomplish through interacting with the CHATBOT.
+Step 3. Summarize what the USER is trying to accomplish in less than 20 words. Format the summary so it starts with "interacting with a chatbot to". Stay succint and do not include personal details about the user.
+Step 4. Structure all summaries in the output format described below
+
+OUTPUT FORMAT
+Output your answer in lines, with the conversation ID and the summary separated by a colon. Here is an example of the output format:
+abcde00000: interacting with a chatbot to learn about mutual funds
+abcde11111: interacting with a chatbot to plan a trip to New York City
+abcde22222: interacting with a chatbot to brainstorm titles for their novel
+
+EXAMPLE INPUT BATCH: 
+conv_ID: abcde00000
+USER: Give me some recipes with chicken.
+
+CHATBOT: Here's 3 recipes that you can try...
+
+USER: More
+
+CHATBOT: Here's another recipe that you can try...
+
+USER: I want spicy dish
+
+CHATBOT: Here's a recipe for spicy fried chicken...
+ 
+--------------------------------------------------------
+conv_ID: abcde11111
+USER: How long does it take to go from Boston to New York City by train?
+
+CHATBOT: A train ride from Boston to New York City is approximately...
+
+USER: Thanks, book me a ticket for Monday morning. I have a business meeting at 11AM.
+
+CHATBOT: I'm sorry, as a language model, I cannot...
+
+USER: Is there a train running Monday morning
+
+CHATBOT:  I'm sorry, as a language model, I cannot...
+
+--------------------------------------------------------
+conv_ID: abcde22222
+USER: how i identify poison ivy. 
+
+CHATBOT: Poison ivies are commonly characterized by clusters of three leaves...
+
+USER: i think i have it in my garden my neighbor also has them
+
+CHATBOT: If you suspect having poison ivy in your garden, it is best to contact...
+
+USER: can i just get rid of it myself
+
+CHATBOT: You can get rid of poison ivy permanently by using...
+
+--------------------------------------------------------
+EXAMPLE OUTPUT: 
+abcde00000: interacting with a chatbot to discover chicken recipes
+abcde11111: interacting with a chatbot to book a train ride from Boston to New York City.
+abcde22222: interacting with a chatbot to learn about controlling poison ivy in their garden.
+
+Now it's your turn.
+
+INPUT BATCH:
+{input_convo_batch}
+
+OUTPUT: 
+

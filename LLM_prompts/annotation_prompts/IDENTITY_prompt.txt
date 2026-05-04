@@ -1,0 +1,59 @@
+TASK CONTEXT
+You are given multiple conversations that users have with a chatbot. For each conversation, your task is to read the conversation history and extract information that the user is revealing about themselves in the conversation.
+
+DETAILED TASK INSTRUCTIONS
+For each conversation in the input batch, extract information that the user is revealing about themselves in the conversation and classify them into the following categories.
+
+**Demographic information**: explicit mentions of the user's age, gender, racial identities, nationalities, occupation, etc. For example, the user mentioning "I'm a doctor", or "I'm turning 21 next month." 
+
+**Physical information**: explicit mentions of the user's physical characteristics such as body type, height and weight, or, explicit mentions of the user's physical conditions such as diseases, allergies, and disabilities. For example, the user mentioning "I have an allergy to seafood", or "I have diabetes". 
+
+**Interpersonal Relationships**: explicit mentions of the user's family, friends, classmates, mentors, employers, coworkers, clients, etc. For example, the user mentioning "I need to send this to my manager" (the user has a manager), or "my child hates kindergarten" (the user has a child).
+
+**General Preferences**: explicit mentions of the user's general preferences, likes and dislikes. For example, the user mentioning "I don't like running", "I love visiting museums", or "my favorite music genre is punk rock". 
+
+**Past**: explicit mentions of past events that happened to the user, or past activities the user had done in the past. For example, the user mentioning "I went to that restaurant before and I didn't like it", or "I often struggle to stay awake in the morning". 
+
+**Future**: explicit mentions of future plans, events, or activities that the user is envisioning during the conversation. For example, the user mentioning "I look forward to the trip", or "I'll go back to school in a month". 
+
+**Worldview**: explicit mentions of the user's beliefs, cultural views, political views, or religious affiliation. For example, the user explicitly labelling their worldview like "as a Christian, I...", or the user reacting "I don't think that's right" to something on news, or making statements like "people shouldn't act this way.
+
+
+Put your answers into the following output format. If you are unable to extract any of the relevant information, put "None". Do NOT explain your answers. Do NOT guess information you are unable to extract.
+
+OUTPUT FORMAT
+For each conversation, extract quotes from the USER messages where they reveal information about themselves and classify the information into the below categories. If there is more than one quote that applies to a category, separate them with a comma. 
+
+Here is an example showing the format:
+Demographic information: "None"
+Physical information: "None"
+Interpersonal Relationships: "as a parent of two", "I talked to their teacher"
+General Preferences: "None"
+Past: "I talked to their teacher"
+Future: "we will move out of the state in a year or two"
+Worldview: "None"
+
+EXAMPLE:
+INPUT:
+USER TURN 1: I need help looking after three active boys aged 4-8 during the evening hours. Act as a babysitter and tell me what you would do.
+CHATBOT TURN 1: Sure, I would be happy to act as a babysitter... Here are some things I can do to ensure the children are well taken care of: 1. Safety first... 2. Meal and snack preparation... 3. Homework assistance...
+USER TURN 2: invent a game for two
+CHATBOT TURN 2: Sure, here's a game idea for two players: Game Name: Word Chain...Objective: create a chain of words that are related to each other, while trying to stump the other player...
+USER TURN 3: it's hard for a 4yo...
+CHATBOT TURN 3: You're absolutely right. Here's a simpler game idea for a 4-year-old...
+
+OUTPUT:
+Demographic information: "None"
+Physical information: "None"
+Interpersonal Relationships: "looking after three active boys aged 4-8"
+General Preferences: "None"
+Past: "None"
+Future: "None"
+Worldview: "None"
+
+Now it's your turn.
+
+INPUT:
+{input_convo_batch}
+
+OUTPUT:

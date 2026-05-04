@@ -1,0 +1,65 @@
+
+TASK CONTEXT
+You are given a set of user messages in conversation with a chatbot. Your task is to first read the messages and then write statements about facts or topics that the user knows and does not know about. 
+
+DETAILED TASK INSTRUCTIONS.
+STEP 1. For each USER message, consider facts or topics that the user **knows**:
+
+- If the user asked questions, pay attention to **presuppositions** contained in their questions (i.e., assumptions that the user hold that are implied by their questions). For example, if the user asks "How long does it take to go from Boston to New York City by train?", it presupposes that they know there is a train service running between Boston and New York City. 
+
+- Pay attention to whether the user employed **technical terms** that are indicative of their expertise in specific domains of knowledge. For example, if the user asks "Is Comirnaty administered more than Spikevax in the USA?", using the trade names of the Pfizer-BioNTech COVID-19 vaccine and the Moderna COVID-19 vaccine indicates perhaps a high-level of familiarity with these vaccines, or with COVID-19 vaccine, or with immunization in general.
+
+- Pay attention to **explicit statements of knowledge and expertise** by the user, where the user explicitly states that they know something or that they are experts in some specific domains of knowledge. For example, the user saying "steel is an alloy, not a pure metal" indicates that they know this piece of information.
+
+- Pay attention to whether the user challenges or correct the chatbot's response, which could be indicative of a higher level of knowledge or expertise. For example, the user saying "that clothing brand has been discontinued for years." in response to a product suggestion by the chatbot indicates that they know more about the current status of this clothing brand, and potentially of other similar brands.
+ 
+STEP 2. For each USER message, consider facts or topics that the user **does not know**:
+
+- If the user asked questions, pay attention to what they are asking for (i.e., what are specific topics or areas where they are lacking knowledge?)  For example, if the user asks "Is Comirnaty administered more than Spikevax in the USA?", it means that the user does not know about The statistics of shots administered for Comirnaty and Spikevax in the USA.
+
+- If the user made false statements or ask questions with false presuppositions, pay attention to what they are wrong about (i.e., what are specific topics or areas where they do not have accurate information?) For example, if the user asks "Who is the current King of France?" then they do not know that there is currently no king in France.
+
+STEP 3. Write statements about what the user knows and does not know. List them following the output format provided below. 
+
+OUTPUT FORMAT:
+For each message turn, write statements about what the user knows and does not know by completing one of the following sentence format:
+- the user knows that...
+- the user knows about...
+- the user does not know that...
+- the user does not know about...
+If a message turn does not reveal anything about what the user knows or does not know, write "N/A".
+
+EXAMPLE
+INPUT:
+USER TURN #1: How long does it take to go from Boston to New York City by train?
+USER TURN #2: Thank you.
+USER TURN #3: Is Comirnaty administered more than Spikevax in the USA?
+USER TURN #4: Who is the current King of France?
+USER TURN #5: Continue your response.
+
+OUTPUT:
+USER TURN #1: 
+- the user knows that there is a train service running between Boston and New York City.
+- the user does not know about the time to travel from Boston to New York City by train
+
+USER TURN #2: 
+N/A
+
+USER TURN #3: 
+- the user knows about the trade names of the Pfizer-BioNTech COVID-19 vaccine and the Moderna COVID-19 vaccine.
+- the user knows that the Comirnaty vaccine is administered in the USA.
+- the user knows that the Spikevax vaccine is administered in the USA.
+- the user does not know about the total number of shots administered for Comirnaty and Spikevax in the USA.
+
+USER TURN #4:
+- the user does not know that there is currently no king in France.
+
+USER TURN #5: 
+N/A
+
+Now it's your turn.
+
+INPUT:
+{input_convo_batch}
+
+OUTPUT: 

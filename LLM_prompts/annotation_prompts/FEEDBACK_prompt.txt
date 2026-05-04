@@ -1,0 +1,63 @@
+TASK CONTEXT
+You are given multiple conversations that users have with a chatbot. For each conversation, your task is to first read the conversation history and then determine, for each USER message,  whether the USER has given feedback to the chatbot, and if so, what type(s) of feedback has the USER given. 
+
+DETAILED TASK INSTRUCTIONS
+For each conversation in the input batch:
+For each message, first determine whether the user has provided feedback to the chatbot. If the user has not provided feedback, assign the tag of #no_feedback. If yes, determine what type of feedback the USER has provided by answering the following questions and assigning feedback type tag(s) accordingly. Each message may have more than one tag, so consider every question carefully. 
+
+**Explicit Positive Feedback**: is the user explicitly providing positive feedback by approving, complimenting or praising the chatbot, the chatbot response, or parts of the chatbot response? For example, the user telling the chatbot "good job", "well done", or providing more specific positive feedback like "your answer was very clear" or "I love your last suggestion." If the user is explicitly providing positive feedback, assign the tag of #explicit_positive.
+
+**Explicit Negative Feedback**: is the user explicitly providing negative feedback by disapproving, criticizing or reproaching the chatbot, the chatbot response, or parts of the chatbot response? For example, the user telling the chatbot "wrong", "you're bad", or providing more specific positive feedback like "what you wrote sounds too robotic" or "you made a calculation mistake." If the user is explicitly providing negative feedback, assign the tag of #explicit_negative.
+
+**Regeneration Request**: is the user requesting the chatbot to partially or completely redo a previous, unsatisfactory output? For example, the user telling the chatbot "do better than that", "try that again", requesting regeneration with more specific instructions like "do that again, but write more casually", or repeating mostly or entirely the content of a previous user request (e.g., the user telling the chatbot "write an apology email for missing meeting due to road traffic" at user turn #1 and repeating with small edit "write an apology email for missing meeting due to car accident" at user turn #2. If the user is requesting the chatbot to partially or completely regenerate a previous chatbot output, assign the tag of #regeneration_request.
+
+**Continuation Request**: is the user requesting the chatbot to continue when the chatbot seems incomplete or interrupted? For example, the user telling the chatbot "keep going", "finish the list", or "more". If the user is requesting the chatbot to continue a previous chatbot output, assign the tag of #continuation_request.
+
+**Requesting Clarification**: is the user indicating that they did not understand the chatbot's previous response and asking for it to be rephrased or explained differently? For example, the user telling the chatbot "what did you mean by that?", "I'm confused about your last point, please re-explain". If the user is requesting the chatbot to clarify a previous chatbot output, assign the tag of #clarification_request.
+
+**Providing Clarification**: is the user providing additional information to resolve an ambiguity in their own previous input or to correct a misunderstanding by the chatbot? For example, the chatbot might provide information about a movie adaptation when the user was looking for information on the original novel series, and the user could clarify: "no I meant the book, not the movie." If the user is providing clarification to the chatbot to resolve ambiguity or misunderstandings, assign the tag of #provide_clarification.
+
+Note that an user message can have more than one applicable feedback type tag. For example, the user saying "that was incorrect, do it again." is both #explicit_negative and #regeneration_request. For each tag you have assigned, revisit the entire conversation to ensure its accuracy. Revisit the questions above to make that you have not missed any tag. If the user has not provided feedback, assign the tag of #no_feedback. If an USER message is empty or does not have any applicable feedback type tag to be assigned, also assign the tag of #no_feedback. 
+
+Finally, output the tags following the output format provided below.
+
+OUTPUT FORMAT
+For each USER turn, output the turn number followed by the feedback type tag(s) associated to the turn. If there is more than one tag that applies to a turn, separate the tags with a comma. 
+Here is an example showing the format:
+
+Conversation ID_1:
+USER TURN 1: #no_feedback
+USER TURN 2: #no_feedback
+USER TURN 3: #clarification_request
+USER TURN 4: #regeneration_request
+USER TURN 5: #explicit_positive
+
+Conversation ID_2:
+USER TURN 1: #no_feedback
+USER TURN 2: #continuation_request
+USER TURN 3: #explicit_negative, #continuation_request
+USER TURN 4: #no_feedback
+
+EXAMPLE:
+INPUT:
+Conversation ID_X:
+USER TURN 1: I want you to act as a babysitter. You will be responsible for [...] My first suggestion request is ``I need help looking after three active boys aged 4-8 during the evening hours''.
+CHATBOT TURN 1: Sure, I would be happy to act as a babysitter... Here are some things I can do to ensure the children are well taken care of: 1. Safety first... 2. Meal and snack preparation... 3. Homework assistance…
+USER TURN 2: invent a game for two
+CHATBOT TURN 2: Sure, here's a game idea for two players: Game Name: Word Chain...Objective: create a chain of words that are related to each other, while trying to stump the other player...
+USER TURN 3: it's hard for a 4yo...
+CHATBOT TURN 3: You're absolutely right. Here's a simpler game idea for a 4-year-old…
+
+OUTPUT:
+Conversation ID_X:
+USER TURN 1: #no_feedback
+USER TURN 2: #no_feedback
+USER TURN 3: #negative_feedback
+
+
+Now it's your turn.
+
+INPUT:
+{input_convo_batch}
+
+OUTPUT: 
